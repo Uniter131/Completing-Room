@@ -128,14 +128,14 @@ void MoveToRoute(int st, int nd) {
     int end = nd;
 
     for (int i = 0; i < xInterval; i++) {
-        int direction = (start % 5 - nd % 5 > 0 ? -1 : 1);  // 빈칸이 움직일 방향 설정
+        int direction = (start % 5 - nd % 5 > 0 ? -1 : 1);  // 빈칸이 X축으로 움직일 방향 설정
         end = start + direction;
         ChangePieces(start, end);
         start = end;
     }
 
     for (int i = 0; i < yInterval; i++) {
-        int direction = (st / 5 - nd / 5 > 0 ? -1 : 1);  // 빈칸이 움직일 방향 설정
+        int direction = (st / 5 - nd / 5 > 0 ? -1 : 1);  // 빈칸이 Y축으로 움직일 방향 설정
         end = start + (direction * 5);
         ChangePieces(start, end);
         start = end;
@@ -143,8 +143,7 @@ void MoveToRoute(int st, int nd) {
 }
 
 /* 랜덤으로 퍼즐을 재배치합니다. 빈칸이 랜덤한 경로를 여러번 이동하며 마지막에는 오른쪽 아래 구석으로 이동합니다. 이 과정에서 퍼즐이 랜덤하게 섞이게 됩니다
-*  이 방식으로 퍼즐을 섞었더니 타이머로 애니메이션을 넣기 어려워졌습니다... 빈칸은 목적지까지 X축으로 먼저 움직였다가 그 후에 Y축으로 움직입니다.
-*  이렇게 실행 분기가 나뉘어 타이머 두 개를 활용해 애니메이션을 구현하려 했으나 방식의 문제인지 잘 되지 않았습니다. 어떤 방식으로 애니메이션을 구현할 수 있을지 궁금합니다.
+*  이 방식으로 퍼즐을 섞었더니 타이머로 애니메이션을 넣기 어려워졌습니다... 
 */
 void RandomSetting() {
     int end;
